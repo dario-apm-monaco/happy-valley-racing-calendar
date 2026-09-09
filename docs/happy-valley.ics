@@ -5,7 +5,8 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:Happy Valley Racing
 X-WR-TIMEZONE:Asia/Hong_Kong
-X-WR-CALDESC:Happy Valley Racecourse race meetings — HKJC 2026/27 (filtered & enriched from official HKJC sources)
+X-WR-CALDESC:Happy Valley Racecourse race meetings — HKJC 2026/27 (filter
+ ed & enriched from official HKJC sources)
 REFRESH-INTERVAL;VALUE=DURATION:PT6H
 X-PUBLISHED-TTL:PT6H
 BEGIN:VTIMEZONE
@@ -20,12 +21,15 @@ END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:hv-2026-09-09@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20260909T190500
 DTEND;TZID=Asia/Hong_Kong:20260909T230500
 SUMMARY:🏇 Happy Valley Season Opening
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\nSeason opening 
  of the HKJC 2026/27 season.\n\nFirst race: 19:05 HKT\nStatus: Confirmed 
  — official race card published\n\nRace card (8 races):\n1. 19:05 - 1200m
@@ -39,7 +43,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20260909
 GEO:22.2706;114.184
 STATUS:CONFIRMED
 TRANSP:OPAQUE
-SEQUENCE:3
+SEQUENCE:4
 X-HKJC-TIME-SOURCE:OFFICIAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -50,12 +54,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2026-09-16@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20260916T190000
 DTEND;TZID=Asia/Hong_Kong:20260916T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nProvisional programme (8
@@ -67,7 +74,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20260916
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:3
+SEQUENCE:4
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -78,12 +85,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2026-09-23@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20260923T190000
 DTEND;TZID=Asia/Hong_Kong:20260923T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nProvisional programme (8
@@ -95,7 +105,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20260923
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:3
+SEQUENCE:4
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -106,12 +116,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2026-10-07@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20261007T190000
 DTEND;TZID=Asia/Hong_Kong:20261007T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nProvisional programme (9
@@ -123,7 +136,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20261007
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:3
+SEQUENCE:4
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -134,12 +147,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2026-10-14@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20261014T190000
 DTEND;TZID=Asia/Hong_Kong:20261014T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nProvisional programme (9
@@ -151,7 +167,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20261014
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:3
+SEQUENCE:4
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -162,12 +178,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2026-10-21@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20261021T190000
 DTEND;TZID=Asia/Hong_Kong:20261021T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nProvisional programme (9
@@ -179,7 +198,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20261021
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:3
+SEQUENCE:4
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -190,12 +209,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2026-11-01@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20261101T130000
 DTEND;TZID=Asia/Hong_Kong:20261101T180000
 SUMMARY:🏇 Happy Valley — Day Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Day race meeting at Happy Valley Racecourse.\nOnly Happy Valley
   day meeting of the season.\n\nTime: not yet published by the HKJC — the
   13:00–18:00 slot is a placeholder.\nStatus: Provisional — race card n
@@ -208,7 +230,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20261101
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:3
+SEQUENCE:4
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Day
 BEGIN:VALARM
@@ -219,12 +241,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2026-11-04@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20261104T190000
 DTEND;TZID=Asia/Hong_Kong:20261104T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nProvisional programme (9
@@ -236,7 +261,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20261104
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:3
+SEQUENCE:4
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -247,12 +272,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2026-11-11@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20261111T190000
 DTEND;TZID=Asia/Hong_Kong:20261111T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nProvisional programme (9
@@ -264,7 +292,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20261111
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:3
+SEQUENCE:4
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -275,12 +303,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2026-11-18@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20261118T190000
 DTEND;TZID=Asia/Hong_Kong:20261118T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nProvisional programme (9
@@ -292,7 +323,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20261118
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:3
+SEQUENCE:4
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -303,12 +334,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2026-11-25@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20261125T190000
 DTEND;TZID=Asia/Hong_Kong:20261125T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nProvisional programme (9
@@ -320,7 +354,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20261125
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:3
+SEQUENCE:4
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -331,12 +365,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2026-12-02@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20261202T190000
 DTEND;TZID=Asia/Hong_Kong:20261202T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nProvisional programme (8
@@ -348,7 +385,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20261202
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:3
+SEQUENCE:4
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -359,12 +396,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2026-12-09@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20261209T190000
 DTEND;TZID=Asia/Hong_Kong:20261209T230000
 SUMMARY:🏇 Happy Valley — LONGINES International Jockeys' Championship
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\nLONGINES IJC.\n
  \nTime: not yet published by the HKJC — the 19:00–23:00 slot is a plac
  eholder.\nStatus: Provisional — race card not yet published\n\nProvision
@@ -376,7 +416,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20261209
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:3
+SEQUENCE:4
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -387,12 +427,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2026-12-16@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20261216T190000
 DTEND;TZID=Asia/Hong_Kong:20261216T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nProvisional programme (9
@@ -404,7 +447,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20261216
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:3
+SEQUENCE:4
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -415,12 +458,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2026-12-23@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20261223T190000
 DTEND;TZID=Asia/Hong_Kong:20261223T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nProvisional programme (9
@@ -432,7 +478,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20261223
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:3
+SEQUENCE:4
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -443,12 +489,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-01-06@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270106T190000
 DTEND;TZID=Asia/Hong_Kong:20270106T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -459,7 +508,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270106
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -470,12 +519,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-01-13@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270113T190000
 DTEND;TZID=Asia/Hong_Kong:20270113T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -486,7 +538,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270113
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -497,12 +549,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-01-20@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270120T190000
 DTEND;TZID=Asia/Hong_Kong:20270120T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -513,7 +568,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270120
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -524,12 +579,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-01-27@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270127T190000
 DTEND;TZID=Asia/Hong_Kong:20270127T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -540,7 +598,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270127
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -551,12 +609,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-02-03@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270203T190000
 DTEND;TZID=Asia/Hong_Kong:20270203T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -567,7 +628,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270203
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -578,12 +639,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-02-11@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270211T190000
 DTEND;TZID=Asia/Hong_Kong:20270211T230000
 SUMMARY:🏇 Happy Valley — Special Thursday Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\nSpecial Thursda
  y meeting after Chinese New Year.\n\nTime: not yet published by the HKJC 
  — the 19:00–23:00 slot is a placeholder.\nStatus: Provisional — race
@@ -594,7 +658,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270211
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -605,12 +669,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-02-17@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270217T190000
 DTEND;TZID=Asia/Hong_Kong:20270217T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -621,7 +688,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270217
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -632,12 +699,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-02-24@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270224T190000
 DTEND;TZID=Asia/Hong_Kong:20270224T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -648,7 +718,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270224
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -659,12 +729,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-03-03@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270303T190000
 DTEND;TZID=Asia/Hong_Kong:20270303T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -675,7 +748,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270303
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -686,12 +759,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-03-17@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270317T190000
 DTEND;TZID=Asia/Hong_Kong:20270317T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -702,7 +778,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270317
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -713,12 +789,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-03-24@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270324T190000
 DTEND;TZID=Asia/Hong_Kong:20270324T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -729,7 +808,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270324
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -740,12 +819,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-03-31@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270331T190000
 DTEND;TZID=Asia/Hong_Kong:20270331T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -756,7 +838,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270331
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -767,12 +849,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-04-07@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270407T190000
 DTEND;TZID=Asia/Hong_Kong:20270407T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -783,7 +868,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270407
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -794,12 +879,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-04-14@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270414T190000
 DTEND;TZID=Asia/Hong_Kong:20270414T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -810,7 +898,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270414
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -821,12 +909,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-04-21@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270421T190000
 DTEND;TZID=Asia/Hong_Kong:20270421T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -837,7 +928,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270421
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -848,12 +939,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-05-05@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270505T190000
 DTEND;TZID=Asia/Hong_Kong:20270505T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -864,7 +958,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270505
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -875,12 +969,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-05-12@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270512T190000
 DTEND;TZID=Asia/Hong_Kong:20270512T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -891,7 +988,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270512
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -902,12 +999,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-05-19@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270519T190000
 DTEND;TZID=Asia/Hong_Kong:20270519T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -918,7 +1018,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270519
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -929,12 +1029,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-05-26@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270526T190000
 DTEND;TZID=Asia/Hong_Kong:20270526T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -945,7 +1048,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270526
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -956,12 +1059,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-06-02@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270602T190000
 DTEND;TZID=Asia/Hong_Kong:20270602T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -972,7 +1078,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270602
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -983,12 +1089,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-06-09@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270609T190000
 DTEND;TZID=Asia/Hong_Kong:20270609T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\nTuen Ng Festiva
  l public holiday.\n\nTime: not yet published by the HKJC — the 19:00–2
  3:00 slot is a placeholder.\nStatus: Provisional — race card not yet pub
@@ -999,7 +1108,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270609
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -1010,12 +1119,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-06-23@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270623T190000
 DTEND;TZID=Asia/Hong_Kong:20270623T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -1026,7 +1138,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270623
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -1037,12 +1149,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-07-07@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270707T190000
 DTEND;TZID=Asia/Hong_Kong:20270707T230000
 SUMMARY:🏇 Happy Valley Race Meeting
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\n\nTime: not yet
   published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatu
  s: Provisional — race card not yet published\n\nRace info:\nhttps://www.
@@ -1053,7 +1168,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270707
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM
@@ -1064,12 +1179,15 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:hv-2027-07-14@happy-valley-racing-calendar
-DTSTAMP:20260909T100418Z
+DTSTAMP:20260909T101717Z
 DTSTART;TZID=Asia/Hong_Kong:20270714T190000
 DTEND;TZID=Asia/Hong_Kong:20270714T230000
 SUMMARY:🏇 Happy Valley Season Finale
-LOCATION:Happy Valley Racecourse\, Wong Nai Chung Road\, Happy Valley\, Hon
- g Kong
+LOCATION:Happy Valley Racecourse\nWong Nai Chung Road\, Happy Valley\, Hong
+  Kong
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Wong Nai Chung Road\, Happy
+  Valley\, Hong Kong;X-APPLE-RADIUS=150;X-TITLE=Happy Valley Racecourse:geo
+ :22.2706,114.184
 DESCRIPTION:Night race meeting at Happy Valley Racecourse.\nHappy Valley Fi
  nale Race Night.\n\nTime: not yet published by the HKJC — the 19:00–23
  :00 slot is a placeholder.\nStatus: Provisional — race card not yet publ
@@ -1080,7 +1198,7 @@ URL:https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20270714
 GEO:22.2706;114.184
 STATUS:TENTATIVE
 TRANSP:OPAQUE
-SEQUENCE:2
+SEQUENCE:3
 X-HKJC-TIME-SOURCE:PROVISIONAL
 X-HKJC-SESSION:Night
 BEGIN:VALARM

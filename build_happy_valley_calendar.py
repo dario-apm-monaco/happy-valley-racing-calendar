@@ -71,7 +71,7 @@ SURFACE = "Turf"
 PRODID = "-//Happy Valley Racing Calendar//EN"
 CALNAME = "Happy Valley Racing"
 # Bump when published DESCRIPTION layout changes so SEQUENCE increments for subscribers.
-DESCRIPTION_SCHEMA = "v2-compact-programme"
+DESCRIPTION_SCHEMA = "v3-apple-structured-location"
 
 # Provisional placeholders only — never presented as official times.
 NIGHT_START = (19, 0)
@@ -689,6 +689,19 @@ def save_sequences(seq: dict[str, dict[str, Any]]) -> None:
     path.write_text(json.dumps(seq, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
+def apple_structured_location_line() -> str:
+    """Apple Calendar needs this proprietary field for tappable Maps locations."""
+    address = ics_escape(ADDRESS)
+    title = ics_escape(VENUE)
+    return (
+        "X-APPLE-STRUCTURED-LOCATION;VALUE=URI;"
+        f"X-ADDRESS={address};"
+        "X-APPLE-RADIUS=150;"
+        f"X-TITLE={title}:"
+        f"geo:{GEO_LAT},{GEO_LON}"
+    )
+
+
 def build_vevent(m: dict[str, Any], sequences: dict[str, dict[str, Any]], now: datetime) -> list[str]:
     start, end, time_source = event_times(m)
     uid = stable_uid(m["date"])
@@ -702,6 +715,8 @@ def build_vevent(m: dict[str, Any], sequences: dict[str, dict[str, Any]], now: d
     status = event_status(m)
     desc = build_description(m, "standard")
     url = m["official_info_url"]
+    # Title + newline + address matches X-TITLE / X-ADDRESS for Apple Maps linking.
+    location_text = f"{VENUE}\n{ADDRESS}"
 
     lines = [
         "BEGIN:VEVENT",
@@ -710,7 +725,8 @@ def build_vevent(m: dict[str, Any], sequences: dict[str, dict[str, Any]], now: d
         f"DTSTART;TZID={TZ_NAME}:{start.strftime('%Y%m%dT%H%M%S')}",
         f"DTEND;TZID={TZ_NAME}:{end.strftime('%Y%m%dT%H%M%S')}",
         f"SUMMARY:{ics_escape(event_title(m))}",
-        f"LOCATION:{ics_escape(LOCATION)}",
+        f"LOCATION:{ics_escape(location_text)}",
+        apple_structured_location_line(),
         f"DESCRIPTION:{ics_escape(desc)}",
         f"URL:{url}",
         f"GEO:{GEO_LAT};{GEO_LON}",
@@ -769,7 +785,13 @@ def write_ics(meetings: list[dict[str, Any]]) -> None:
     # Fold long lines and join with CRLF
     folded: list[str] = []
     for line in out:
-        if line.startswith("DESCRIPTION:") or line.startswith("SUMMARY:") or line.startswith("LOCATION:"):
+        if (
+            line.startswith("DESCRIPTION:")
+            or line.startswith("SUMMARY:")
+            or line.startswith("LOCATION:")
+            or line.startswith("X-APPLE-STRUCTURED-LOCATION")
+            or len(line.encode("utf-8")) > 75
+        ):
             folded.append(fold_line(line))
         else:
             folded.append(line)
@@ -1055,6 +1077,10 @@ def qa(meetings: list[dict[str, Any]]) -> None:
         errors.append("Missing -P1D VALARM")
     if "TRIGGER:-P7D" in text:
         errors.append("Unexpected -P7D VALARM (should be removed)")
+    if "X-APPLE-STRUCTURED-LOCATION" not in text:
+        errors.append("Missing X-APPLE-STRUCTURED-LOCATION for Apple Maps")
+    if text.count("X-APPLE-STRUCTURED-LOCATION") != len(meetings):
+        errors.append("X-APPLE-STRUCTURED-LOCATION count mismatch")
     uids = re.findall(r"^UID:(.+)$", text, re.M)
     if len(uids) != len(set(uids)):
         errors.append("Duplicate UIDs in ICS")
