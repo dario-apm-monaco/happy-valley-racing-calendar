@@ -16,3 +16,6 @@ hv_work/
 
 # Local scratch
 *.log
+
+# Cursor canvas preview (local only — lives also under ~/.cursor/projects/.../canvases/)
+*.canvas.tsx

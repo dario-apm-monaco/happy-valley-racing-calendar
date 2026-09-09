@@ -54,8 +54,9 @@ FIXTURE_MONTHLY = (
 )
 RACECARD = (
     "https://racing.hkjc.com/racing/information/English/Racing/RaceCard.aspx"
-    "?RaceDate={yyyy}/{mm}/{dd}&Racecourse=HV&RaceNo=1"
+    "?RaceDate={yyyy}/{mm}/{dd}&Racecourse=HV&RaceNo={race_no}"
 )
+INTERNAL_NOTE_MARKERS = ("Programme Amendment",)
 RACE_INFO = (
     "https://www.hkjc.com/english/racinginfo/racing_cal.asp?d={yyyymmdd}"
 )
@@ -70,6 +71,8 @@ TZ = ZoneInfo(TZ_NAME)
 SURFACE = "Turf"
 PRODID = "-//Happy Valley Racing Calendar//EN"
 CALNAME = "Happy Valley Racing"
+# Bump when published DESCRIPTION layout changes so SEQUENCE increments for subscribers.
+DESCRIPTION_SCHEMA = "v2-compact-programme"
 
 # Provisional placeholders only — never presented as official times.
 NIGHT_START = (19, 0)
@@ -177,18 +180,23 @@ def reconcile(baseline: dict[str, Any], feed_events: list[dict[str, Any]]) -> tu
             changes.append(
                 f"SESSION mismatch {d}: baseline={be['session']} feed={fe['session']} (using feed)"
             )
-        notes = (be or {}).get("notes", "")
+        notes = (be or {}).get("notes", "") or ""
         if fe["special_event"] and not notes:
             notes = fe["special_event"]
         tentative = d in only_feed or d in only_base
         if be and be.get("day") != fe["day"]:
             changes.append(f"WEEKDAY mismatch {d}: baseline={be['day']} feed={fe['day']}")
+        # Prefer live-feed special labels; fall back to baseline notes that are
+        # real meeting names — never promote internal amendment notes.
+        special = fe["special_event"] or ""
+        if not special and notes and not is_internal_note(notes):
+            special = notes
         merged.append(
             {
                 "date": d,
                 "day": fe["day"],
                 "session": session,
-                "special_event": fe["special_event"] or notes or "",
+                "special_event": special,
                 "feed_summary": fe["feed_summary"],
                 "notes": notes,
                 "baseline_present": be is not None,
@@ -206,15 +214,34 @@ def reconcile(baseline: dict[str, Any], feed_events: list[dict[str, Any]]) -> tu
     return merged, changes
 
 
-def parse_fixture_day_race_counts(html: str) -> dict[int, int]:
-    """Parse provisional race counts per calendar day from Fixture.aspx HTML."""
+def is_internal_note(text: str) -> bool:
+    """True for baseline/changelog notes that are not public special-event labels."""
+    return any(marker in text for marker in INTERNAL_NOTE_MARKERS)
+
+
+def format_distance_summary(by_distance: dict[str, int]) -> str:
+    parts = [
+        f"{count}x{dist}m"
+        for dist, count in sorted(by_distance.items(), key=lambda x: int(x[0]))
+    ]
+    return ", ".join(parts)
+
+
+def parse_fixture_day_programmes(
+    html: str,
+) -> dict[int, dict[str, Any]]:
+    """Parse provisional race programmes per calendar day from Fixture.aspx HTML.
+
+    Tokens like ``1200(2)`` mean two races at 1200 m — sum the parenthetical
+    section counts rather than counting token lines.
+    """
     html = re.sub(r"<script[\s\S]*?</script>", "", html, flags=re.I)
     html = re.sub(r"<style[\s\S]*?</style>", "", html, flags=re.I)
     text = re.sub(r"<br\s*/?>", "\n", html, flags=re.I)
     text = re.sub(r"</tr>", "\n---ROW---\n", text, flags=re.I)
     text = re.sub(r"</td>", "\n---CELL---\n", text, flags=re.I)
     text = re.sub(r"<[^>]+>", "\n", text)
-    results: dict[int, int] = {}
+    results: dict[int, dict[str, Any]] = {}
     for block in re.split(r"---CELL---|---ROW---", text):
         lines = [re.sub(r"\s+", " ", ln).strip() for ln in block.split("\n")]
         lines = [ln for ln in lines if ln]
@@ -223,22 +250,93 @@ def parse_fixture_day_race_counts(html: str) -> dict[int, int]:
         day = int(lines[0])
         if day < 1 or day > 31:
             continue
-        races = re.findall(r"\d{3,4}\(\d+\)", " ".join(lines[1:]))
-        if races:
-            results[day] = len(races)
+        pairs = re.findall(r"(\d{3,4})\((\d+)\)", " ".join(lines[1:]))
+        if not pairs:
+            continue
+        by_distance: dict[str, int] = {}
+        total = 0
+        for dist, sections in pairs:
+            n = int(sections)
+            total += n
+            by_distance[dist] = by_distance.get(dist, 0) + n
+        results[day] = {
+            "count": total,
+            "by_distance": by_distance,
+            "summary": format_distance_summary(by_distance),
+        }
     return results
+
+
+def parse_fixture_day_race_counts(html: str) -> dict[int, int]:
+    """Compatibility wrapper: day → total race count from provisional programme."""
+    return {day: info["count"] for day, info in parse_fixture_day_programmes(html).items()}
+
+
+def racecard_url_for(d: date, race_no: int = 1) -> str:
+    return RACECARD.format(
+        yyyy=f"{d.year:04d}",
+        mm=f"{d.month:02d}",
+        dd=f"{d.day:02d}",
+        race_no=race_no,
+    )
+
+
+def parse_race_card_detail(html: str, race_no: int) -> dict[str, Any] | None:
+    """Extract time / distance / class for one race from a RaceCard.aspx page."""
+    pat = re.compile(
+        rf"Race\s*{race_no}\s*-\s*([^<]+)</span><br>"
+        rf"[^<]*,\s*(\d{{1,2}}:\d{{2}})<br>"
+        rf"[^<]*?(\d{{3,4}})M[^<]*<br>"
+        rf"[^<]*?(Class\s*\d)",
+        re.I,
+    )
+    m = pat.search(html)
+    if not m:
+        # Fallback: looser extraction around the Race N header.
+        header = re.search(
+            rf"Race\s*{race_no}\s*-\s*([^<]+)</span><br>([\s\S]{{0,220}})",
+            html,
+            re.I,
+        )
+        if not header:
+            return None
+        blob = header.group(0)
+        time_m = re.search(r"\b(\d{1,2}:\d{2})\b", blob)
+        dist_m = re.search(r"\b(\d{3,4})M\b", blob)
+        class_m = re.search(r"(Class\s*\d)", blob, re.I)
+        if not (time_m and dist_m and class_m):
+            return None
+        name = re.sub(r"\s+", " ", header.group(1)).strip()
+        return {
+            "no": race_no,
+            "name": name,
+            "time": time_m.group(1),
+            "distance_m": int(dist_m.group(1)),
+            "class": class_m.group(1).title().replace("Class ", "Class "),
+        }
+    name = re.sub(r"\s+", " ", m.group(1)).strip()
+    klass = re.sub(r"\s+", " ", m.group(4)).strip()
+    if klass.lower().startswith("class"):
+        klass = "Class " + klass.split()[-1]
+    return {
+        "no": race_no,
+        "name": name,
+        "time": m.group(2),
+        "distance_m": int(m.group(3)),
+        "class": klass,
+    }
 
 
 def enrich_race_counts(meetings: list[dict[str, Any]]) -> None:
     months = sorted({(int(m["date"][:4]), int(m["date"][5:7])) for m in meetings})
-    cache: dict[tuple[int, int], dict[int, int]] = {}
+    cache: dict[tuple[int, int], dict[int, dict[str, Any]]] = {}
     url_cache: dict[tuple[int, int], str] = {}
     for year, month in months:
         url = FIXTURE_MONTHLY.format(month=month, year=year)
         url_cache[(year, month)] = url
         try:
             html = fetch(url)
-            cache[(year, month)] = parse_fixture_day_race_counts(html)
+            cache[(year, month)] = parse_fixture_day_programmes(html)
             print(
                 f"  fetched fixture {year}-{month:02d} "
                 f"({len(cache[(year, month)])} programmed days)"
@@ -249,14 +347,23 @@ def enrich_race_counts(meetings: list[dict[str, Any]]) -> None:
 
     for m in meetings:
         d = date.fromisoformat(m["date"])
-        count = cache.get((d.year, d.month), {}).get(d.day)
-        m["number_of_races"] = count
-        m["number_of_races_label"] = (
-            str(count) if count else "Not yet published"
-        )
+        info = cache.get((d.year, d.month), {}).get(d.day)
         m["fixture_page_url"] = url_cache.get(
             (d.year, d.month), FIXTURE_MONTHLY.format(month=d.month, year=d.year)
         )
+        m["race_programme"] = []
+        m["provisional_programme_summary"] = None
+        m["fixture_race_count"] = None
+        m["races_source"] = None
+        if info:
+            m["fixture_race_count"] = info["count"]
+            m["number_of_races"] = info["count"]
+            m["number_of_races_label"] = str(info["count"])
+            m["provisional_programme_summary"] = info["summary"]
+            m["races_source"] = "FIXTURE"
+        else:
+            m["number_of_races"] = None
+            m["number_of_races_label"] = "Not yet published"
 
 
 def enrich_first_race_times(meetings: list[dict[str, Any]]) -> None:
@@ -264,14 +371,13 @@ def enrich_first_race_times(meetings: list[dict[str, Any]]) -> None:
     today = datetime.now(TZ).date()
     for m in meetings:
         d = date.fromisoformat(m["date"])
-        m["racecard_url"] = RACECARD.format(
-            yyyy=f"{d.year:04d}", mm=f"{d.month:02d}", dd=f"{d.day:02d}"
-        )
+        m["racecard_url"] = racecard_url_for(d, 1)
         m["official_info_url"] = RACE_INFO.format(yyyymmdd=d.strftime("%Y%m%d"))
         m["first_race_time"] = None
         m["first_race_time_label"] = "To be confirmed by HKJC"
         m["time_source"] = "PROVISIONAL"
         m["race_card_published"] = False
+        m.setdefault("race_programme", [])
 
         # Probe race cards for meetings within a ~45-day forward window (and recent past).
         if d > today + timedelta(days=45) or d < today - timedelta(days=7):
@@ -285,35 +391,47 @@ def enrich_first_race_times(meetings: list[dict[str, Any]]) -> None:
         if "Happy Valley" not in html and "跑馬地" not in html:
             continue
 
-        race_nos = {int(x) for x in re.findall(r"RaceNo=(\d+)", html)}
-        race_nos = {n for n in race_nos if 1 <= n <= 14}
-        if len(race_nos) >= 4:
-            # Race card programme overrides the provisional monthly fixture count.
-            m["number_of_races"] = len(race_nos)
-            m["number_of_races_label"] = str(len(race_nos))
+        race_nos = sorted(
+            {int(x) for x in re.findall(r"RaceNo=(\d+)", html) if 1 <= int(x) <= 14}
+        )
+        if len(race_nos) < 4:
+            continue
 
-        times = re.findall(r"\b([01]?\d|2[0-3]):([0-5]\d)\b", html)
-        picked = None
-        for hh, mm in times:
-            h = int(hh)
-            if m["session"] == "Night" and 18 <= h <= 21:
-                picked = (h, int(mm))
-                break
-            if m["session"] == "Day" and 11 <= h <= 15:
-                picked = (h, int(mm))
-                break
-        if picked is None and times:
-            h, mm = int(times[0][0]), int(times[0][1])
-            if 10 <= h <= 22:
-                picked = (h, mm)
-        if picked:
-            m["first_race_time"] = f"{picked[0]:02d}:{picked[1]:02d}"
-            m["first_race_time_label"] = m["first_race_time"]
-            m["time_source"] = "OFFICIAL"
-            m["race_card_published"] = True
+        programme: list[dict[str, Any]] = []
+        for no in race_nos:
+            page = html if no == 1 else None
+            if page is None:
+                try:
+                    page = fetch(racecard_url_for(d, no))
+                except RuntimeError as e:
+                    print(f"  WARN racecard {m['date']} race {no}: {e}")
+                    continue
+            detail = parse_race_card_detail(page, no)
+            if detail:
+                programme.append(detail)
+
+        if not programme:
+            continue
+
+        programme.sort(key=lambda r: r["no"])
+        m["race_programme"] = programme
+        m["number_of_races"] = len(race_nos)
+        m["number_of_races_label"] = str(len(race_nos))
+        m["races_source"] = "RACE_CARD"
+        m["first_race_time"] = programme[0]["time"]
+        m["first_race_time_label"] = m["first_race_time"]
+        m["time_source"] = "OFFICIAL"
+        m["race_card_published"] = True
+        print(
+            f"  official race card {m['date']}: first {m['first_race_time']} "
+            f"({len(programme)}/{len(race_nos)} races detailed)"
+        )
+
+        fixture_count = m.get("fixture_race_count")
+        if fixture_count and fixture_count != len(race_nos):
             print(
-                f"  official first race {m['date']}: {m['first_race_time']} "
-                f"({m.get('number_of_races') or '?'} races)"
+                f"  NOTE {m['date']}: fixture programme={fixture_count} races, "
+                f"race card={len(race_nos)} races (using race card)"
             )
 
 
@@ -363,102 +481,105 @@ def event_status(m: dict[str, Any]) -> str:
 
 
 def build_description(m: dict[str, Any], detail: str = "standard") -> str:
+    """Compact event description for ICS / preview.
+
+    detail:
+      - standard (published): session, status, times/programme, one URL, disclaimer
+      - full (audit): adds GPS, time source, all official URLs, primary sources
+    """
     start, end, src = event_times(m)
-    session_label = "Day Race Meeting" if m["session"] == "Day" else "Night Race Meeting"
-    if src == "OFFICIAL":
-        race_times = (
-            f"First race: {m['first_race_time']} HKT (official race card)\n"
-            f"Meeting window (approx.): {start.strftime('%H:%M')}–{end.strftime('%H:%M')} HKT"
-        )
+    session_blurb = (
+        "Day race meeting at Happy Valley Racecourse."
+        if m["session"] == "Day"
+        else "Night race meeting at Happy Valley Racecourse."
+    )
+    special = (m.get("special_event") or "").strip()
+    if is_internal_note(special):
+        special = ""
+
+    lines: list[str] = [session_blurb]
+    if special:
+        lines.append(special + ".")
+    elif m["date"] == "2026-09-09":
+        lines.append("Season opening of the HKJC 2026/27 season.")
+    lines.append("")
+
+    if src == "OFFICIAL" and m.get("first_race_time"):
+        lines.append(f"First race: {m['first_race_time']} HKT")
     else:
-        race_times = (
-            "Race times to be confirmed by HKJC — this time slot is a provisional placeholder.\n"
-            f"Provisional window: {start.strftime('%H:%M')}–{end.strftime('%H:%M')} HKT"
+        lines.append(
+            "Time: not yet published by the HKJC — the "
+            f"{start.strftime('%H:%M')}–{end.strftime('%H:%M')} slot is a placeholder."
         )
 
-    special = m.get("special_event") or "Not yet published"
-    races = m.get("number_of_races_label", "Not yet published")
-    if m.get("number_of_races"):
-        races = f"{m['number_of_races']} (provisional programme — subject to amendment)"
+    if m.get("race_card_published"):
+        lines.append("Status: Confirmed — official race card published")
+    else:
+        lines.append("Status: Provisional — race card not yet published")
+    lines.append("")
 
-    lines_min = [
-        event_title(m),
-        "",
-        f"Venue: {VENUE}",
-        f"Session: {session_label}",
-        f"Race Times: {race_times.split(chr(10))[0]}",
-        f"Official info: {m['official_info_url']}",
-        "",
-        "Important: Fixtures may be amended. Check HKJC before attending.",
-    ]
+    programme = m.get("race_programme") or []
+    race_count = m.get("number_of_races")
+    if m.get("race_card_published") and programme:
+        lines.append(f"Race card ({len(programme)} races):")
+        for race in programme:
+            lines.append(
+                f"{race['no']}. {race['time']} - {race['distance_m']}m - {race['class']}"
+            )
+        lines.append("")
+        lines.append("Full card:")
+        lines.append(m.get("racecard_url") or m["official_info_url"])
+    elif race_count and m.get("provisional_programme_summary"):
+        lines.append(
+            f"Provisional programme ({race_count} races): "
+            f"{m['provisional_programme_summary']}"
+        )
+        lines.append("Subject to amendment by the HKJC.")
+        lines.append("")
+        lines.append("Race info:")
+        lines.append(m["official_info_url"])
+    elif race_count:
+        lines.append(f"Races: {race_count} (provisional programme, subject to amendment)")
+        lines.append("")
+        lines.append("Race info:")
+        lines.append(m["official_info_url"])
+    else:
+        lines.append("Race info:")
+        lines.append(m["official_info_url"])
 
-    lines_std = [
-        event_title(m),
-        "",
-        "Venue:",
-        VENUE,
-        "",
-        "Address:",
-        ADDRESS,
-        "",
-        "Session:",
-        session_label,
-        "",
-        "Track Surface:",
-        SURFACE,
-        "",
-        "Timezone:",
-        "Hong Kong Time — UTC+8",
-        "",
-        "Race Times:",
-        race_times,
-        "",
-        "Number of Races:",
-        races,
-        "",
-        "Special Event:",
-        special,
-        "",
-        "Official HKJC Fixture / Race Info:",
-        m["official_info_url"],
-        "",
-        "Monthly Fixture Programme:",
-        m.get("fixture_page_url", ""),
-        "",
-        "Race Card:",
-        m.get("racecard_url", ""),
-        "",
-        "Important:",
-        "Race cards, race times and fixtures may be amended.",
-        "Please check the official HKJC website before attending.",
-        "The Hong Kong Jockey Club may amend, reschedule or cancel race meetings.",
-    ]
+    lines.append("")
+    lines.append(
+        "Fixtures and race times may be amended or cancelled by the HKJC. "
+        "Please check before attending."
+    )
 
-    lines_full = lines_std + [
-        "",
-        "GPS:",
-        f"{GEO_LAT}, {GEO_LON}",
-        "",
-        "Status:",
-        event_status(m),
-        "",
-        "Time Source:",
-        src,
-        "",
-        "Season:",
-        "HKJC Racing Season 2026/2027",
-        "",
-        "Primary Sources:",
-        FIXTURE_PDF,
-        HKJC_FEED,
-        RACING_NEWS_FIXTURES,
-    ]
+    if detail == "full":
+        lines.extend(
+            [
+                "",
+                f"GPS: {GEO_LAT}, {GEO_LON}",
+                f"Time source: {src}",
+                f"Races source: {m.get('races_source') or 'none'}",
+                f"Track surface: {SURFACE} (Happy Valley is turf-only)",
+                "",
+                "Official URLs:",
+                m["official_info_url"],
+                m.get("fixture_page_url") or "",
+                m.get("racecard_url") or "",
+                "",
+                "Primary sources:",
+                FIXTURE_PDF,
+                HKJC_FEED,
+                RACING_NEWS_FIXTURES,
+            ]
+        )
+        if m.get("notes") and is_internal_note(m["notes"]):
+            lines.extend(["", f"Internal note: {m['notes']}"])
 
-    if detail == "minimal":
-        return "\n".join(lines_min)
-    if detail == "complete":
-        return "\n".join(lines_full)
-    return "\n".join(lines_std)
+    # Drop accidental blank-only trailing empties while keeping intentional spacing.
+    while lines and lines[-1] == "":
+        lines.pop()
+    return "\n".join(lines)
 
 
 def fold_line(line: str) -> str:
@@ -544,9 +665,13 @@ def content_hash(m: dict[str, Any]) -> str:
             "title": event_title(m),
             "special": m.get("special_event"),
             "races": m.get("number_of_races"),
+            "races_source": m.get("races_source"),
+            "programme": m.get("race_programme") or [],
+            "provisional_summary": m.get("provisional_programme_summary"),
             "first": m.get("first_race_time"),
             "status": event_status(m),
             "time_source": event_times(m)[2],
+            "description_schema": DESCRIPTION_SCHEMA,
         },
         sort_keys=True,
     )
@@ -670,6 +795,7 @@ def write_csv(meetings: list[dict[str, Any]]) -> None:
         "Special Event",
         "Status",
         "Official Source URL",
+        "Programme Summary",
     ]
     with CSV_PATH.open("w", encoding="utf-8-sig", newline="") as f:
         w = csv.DictWriter(f, fieldnames=fields)
@@ -695,9 +821,17 @@ def write_csv(meetings: list[dict[str, Any]]) -> None:
                     "Timezone": TZ_NAME,
                     "First Race Time": first,
                     "Number of Races": m.get("number_of_races_label", "Not yet published"),
-                    "Special Event": m.get("special_event") or "Not yet published",
+                    "Special Event": m.get("special_event") or "",
                     "Status": event_status(m),
                     "Official Source URL": m["official_info_url"],
+                    "Programme Summary": (
+                        "; ".join(
+                            f"{r['no']}. {r['time']} {r['distance_m']}m {r['class']}"
+                            for r in (m.get("race_programme") or [])
+                        )
+                        or m.get("provisional_programme_summary")
+                        or ""
+                    ),
                 }
             )
     print(f"Wrote {CSV_PATH}")
@@ -707,7 +841,11 @@ def write_readme(meetings: list[dict[str, Any]], changes: list[str]) -> None:
     night = sum(1 for m in meetings if m["session"] == "Night")
     day = sum(1 for m in meetings if m["session"] == "Day")
     non_wed = [m for m in meetings if m["day"] != "Wednesday"]
-    specials = [m for m in meetings if m.get("special_event")]
+    specials = [
+        m
+        for m in meetings
+        if m.get("special_event") and not is_internal_note(m["special_event"])
+    ]
     confirmed = sum(1 for m in meetings if event_status(m) == "CONFIRMED")
     first = meetings[0]["date"] if meetings else "n/a"
     last = meetings[-1]["date"] if meetings else "n/a"
@@ -806,6 +944,11 @@ HTTPS fallback (same file):
 - Race times: official when published; otherwise a **provisional placeholder** window
   (night 19:00–23:00 HKT, day 13:00–18:00 HKT), clearly labelled as such.
 - Reminder: **1 day before** each meeting (`VALARM -P1D`).
+- Event descriptions omit unknown fields (no “Not yet published” placeholders) and omit
+  constant venue/address/timezone/turf lines already carried by other ICS fields.
+  Happy Valley is turf-only; when an official race card is published the description
+  lists each race (time, distance, class); otherwise a one-line provisional distance
+  summary is shown when the monthly fixture programme is available.
 
 ## Important
 
@@ -858,11 +1001,13 @@ def write_preview_json(meetings: list[dict[str, Any]]) -> None:
                 "end": end.strftime("%H:%M"),
                 "first_race": m.get("first_race_time_label"),
                 "races": m.get("number_of_races_label"),
-                "special": m.get("special_event") or "Not yet published",
+                "races_source": m.get("races_source"),
+                "special": m.get("special_event") or "",
+                "provisional_programme": m.get("provisional_programme_summary") or "",
+                "race_programme": m.get("race_programme") or [],
                 "url": m["official_info_url"],
-                "description_minimal": build_description(m, "minimal"),
                 "description_standard": build_description(m, "standard"),
-                "description_complete": build_description(m, "complete"),
+                "description_full": build_description(m, "full"),
             }
         )
     PREVIEW_JSON.write_text(json.dumps(rows, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -880,6 +1025,40 @@ def qa(meetings: list[dict[str, Any]]) -> None:
             errors.append(f"Weekday mismatch {m['date']}: {m['day']} vs {d.strftime('%A')}")
         if not (date(2026, 9, 6) <= d <= date(2027, 7, 14)):
             errors.append(f"Date outside season: {m['date']}")
+        if m.get("special_event") and is_internal_note(m["special_event"]):
+            errors.append(f"Internal note leaked into special_event: {m['date']}")
+        if m.get("race_card_published") and not m.get("race_programme"):
+            errors.append(f"CONFIRMED without race programme: {m['date']}")
+        fixture_count = m.get("fixture_race_count")
+        if (
+            m.get("races_source") == "RACE_CARD"
+            and fixture_count
+            and fixture_count != m.get("number_of_races")
+        ):
+            # Amendment is allowed; log only — do not fail QA.
+            print(
+                f"QA note: {m['date']} fixture={fixture_count} vs "
+                f"race card={m.get('number_of_races')}"
+            )
+        desc = build_description(m, "standard")
+        if "Not yet published" in desc:
+            errors.append(f"Description still contains 'Not yet published': {m['date']}")
+        if "Track: Turf" in desc or "Track Surface:" in desc:
+            errors.append(f"Description still contains turf track line: {m['date']}")
+        if "Venue:" in desc or "Timezone:" in desc:
+            errors.append(f"Description still contains redundant venue/timezone: {m['date']}")
+
+    # Non-regression: 9 Sep provisional programme must sum sections to 8.
+    sept = next((m for m in meetings if m["date"] == "2026-09-09"), None)
+    if sept and sept.get("fixture_race_count") not in (None, 8):
+        errors.append(
+            f"9 Sep fixture race count expected 8, got {sept.get('fixture_race_count')}"
+        )
+    if sept and sept.get("race_card_published") and sept.get("number_of_races") != 8:
+        errors.append(
+            f"9 Sep race card race count expected 8, got {sept.get('number_of_races')}"
+        )
+
     night = sum(1 for m in meetings if m["session"] == "Night")
     dayn = sum(1 for m in meetings if m["session"] == "Day")
     print(f"QA: {len(meetings)} meetings ({night} night, {dayn} day)")
@@ -906,6 +1085,8 @@ def qa(meetings: list[dict[str, Any]]) -> None:
     for r in rows:
         if "Sha Tin" in r.get("Venue", "") or "Sha Tin" in r.get("Event Name", ""):
             errors.append(f"Sha Tin leaked into CSV: {r.get('Date')}")
+        if r.get("Date") == "2026-11-18" and "Programme Amendment" in (r.get("Special Event") or ""):
+            errors.append("Programme Amendment leaked into CSV Special Event for 2026-11-18")
 
     if errors:
         print("QA FAILED:")

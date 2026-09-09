@@ -54,7 +54,6 @@ HTTPS fallback (same file):
 ### Special / named meetings
 
 - 2026-11-01 — Only Happy Valley day meeting of the season
-- 2026-11-18 — Programme Amendment No.1: Class 5 distance change (not a date change)
 - 2026-12-09 — LONGINES IJC
 - 2027-02-11 — Special Thursday meeting after Chinese New Year
 - 2027-06-09 — Tuen Ng Festival public holiday
@@ -79,6 +78,11 @@ HTTPS fallback (same file):
 - Race times: official when published; otherwise a **provisional placeholder** window
   (night 19:00–23:00 HKT, day 13:00–18:00 HKT), clearly labelled as such.
 - Reminder: **1 day before** each meeting (`VALARM -P1D`).
+- Event descriptions omit unknown fields (no “Not yet published” placeholders) and omit
+  constant venue/address/timezone/turf lines already carried by other ICS fields.
+  Happy Valley is turf-only; when an official race card is published the description
+  lists each race (time, distance, class); otherwise a one-line provisional distance
+  summary is shown when the monthly fixture programme is available.
 
 ## Important
 
