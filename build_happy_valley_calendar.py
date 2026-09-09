@@ -30,7 +30,6 @@ DOCS_DIR = ROOT / "docs"
 ICS_PATH = DOCS_DIR / "happy-valley.ics"
 CSV_PATH = ROOT / "Happy_Valley_Racing_2026-27_Details.csv"
 README_PATH = ROOT / "Happy_Valley_Racing_2026-27_README.md"
-CHANGELOG_PATH = ROOT / "CHANGELOG.md"
 PREVIEW_JSON = ROOT / "data" / "preview_events.json"
 
 HKJC_FEED = (
@@ -967,24 +966,6 @@ Requires Python 3.10+ (stdlib only).
     print(f"Wrote {README_PATH}")
 
 
-def write_changelog(changes: list[str]) -> None:
-    stamp = datetime.now(TZ).strftime("%Y-%m-%d %H:%M %Z")
-    if not changes:
-        entry = f"## {stamp}\n\n- No differences between official feed and PDF baseline.\n\n"
-    else:
-        entry = f"## {stamp}\n\n" + "\n".join(f"- {c}" for c in changes) + "\n\n"
-    prev = CHANGELOG_PATH.read_text(encoding="utf-8") if CHANGELOG_PATH.exists() else "# Changelog\n\n"
-    if not prev.startswith("# Changelog"):
-        prev = "# Changelog\n\n" + prev
-    # Prepend new entry after title
-    parts = prev.split("\n", 2)
-    if len(parts) >= 2:
-        new = parts[0] + "\n\n" + entry + (parts[2] if len(parts) > 2 else "")
-    else:
-        new = "# Changelog\n\n" + entry
-    CHANGELOG_PATH.write_text(new, encoding="utf-8")
-
-
 def write_preview_json(meetings: list[dict[str, Any]]) -> None:
     rows = []
     for m in meetings:
@@ -1125,14 +1106,13 @@ def main() -> int:
     write_ics(meetings)
     write_csv(meetings)
     write_readme(meetings, changes)
-    write_changelog(changes)
     write_preview_json(meetings)
     qa(meetings)
 
     if len(meetings) != expected:
         print(
             f"WARNING: count {len(meetings)} != baseline expected {expected}. "
-            "ICS published with TENTATIVE flags on drifted dates; see CHANGELOG."
+            "ICS published with TENTATIVE flags on drifted dates; see README feed vs baseline."
         )
     return 0
 
