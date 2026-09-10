@@ -4,76 +4,19 @@
     "day": "Wednesday",
     "title": "🏇 Happy Valley Season Opening",
     "session": "Night",
-    "status": "CONFIRMED",
-    "time_source": "OFFICIAL",
-    "start": "19:05",
-    "end": "23:05",
-    "first_race": "19:05",
+    "status": "TENTATIVE",
+    "time_source": "PROVISIONAL",
+    "start": "19:00",
+    "end": "23:00",
+    "first_race": "To be confirmed by HKJC",
     "races": "8",
-    "races_source": "RACE_CARD",
+    "races_source": "FIXTURE",
     "special": "",
     "provisional_programme": "1x1000m, 4x1200m, 3x1650m",
-    "race_programme": [
-      {
-        "no": 1,
-        "name": "ADMIRALTY HANDICAP",
-        "time": "19:05",
-        "distance_m": 1200,
-        "class": "Class 5"
-      },
-      {
-        "no": 2,
-        "name": "KWUN TONG HANDICAP",
-        "time": "19:35",
-        "distance_m": 1650,
-        "class": "Class 4"
-      },
-      {
-        "no": 3,
-        "name": "ADMIRALTY HANDICAP",
-        "time": "20:05",
-        "distance_m": 1200,
-        "class": "Class 5"
-      },
-      {
-        "no": 4,
-        "name": "KWUN TONG HANDICAP",
-        "time": "20:35",
-        "distance_m": 1650,
-        "class": "Class 4"
-      },
-      {
-        "no": 5,
-        "name": "CENTRAL HANDICAP",
-        "time": "21:10",
-        "distance_m": 1650,
-        "class": "Class 3"
-      },
-      {
-        "no": 6,
-        "name": "KOWLOON TONG HANDICAP",
-        "time": "21:45",
-        "distance_m": 1000,
-        "class": "Class 4"
-      },
-      {
-        "no": 7,
-        "name": "TSIM SHA TSUI HANDICAP",
-        "time": "22:15",
-        "distance_m": 1200,
-        "class": "Class 4"
-      },
-      {
-        "no": 8,
-        "name": "WAN CHAI HANDICAP",
-        "time": "22:50",
-        "distance_m": 1200,
-        "class": "Class 3"
-      }
-    ],
+    "race_programme": [],
     "url": "https://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20260909",
-    "description_standard": "Night race meeting at Happy Valley Racecourse.\nSeason opening of the HKJC 2026/27 season.\n\nFirst race: 19:05 HKT\nStatus: Confirmed — official race card published\n\nRace card (8 races):\n1. 19:05 - 1200m - Class 5\n2. 19:35 - 1650m - Class 4\n3. 20:05 - 1200m - Class 5\n4. 20:35 - 1650m - Class 4\n5. 21:10 - 1650m - Class 3\n6. 21:45 - 1000m - Class 4\n7. 22:15 - 1200m - Class 4\n8. 22:50 - 1200m - Class 3\n\nFull card:\nhttps://racing.hkjc.com/racing/information/English/Racing/RaceCard.aspx?RaceDate=2026/09/09&Racecourse=HV&RaceNo=1\n\nFixtures and race times may be amended or cancelled by the HKJC. Please check before attending.",
-    "description_full": "Night race meeting at Happy Valley Racecourse.\nSeason opening of the HKJC 2026/27 season.\n\nFirst race: 19:05 HKT\nStatus: Confirmed — official race card published\n\nRace card (8 races):\n1. 19:05 - 1200m - Class 5\n2. 19:35 - 1650m - Class 4\n3. 20:05 - 1200m - Class 5\n4. 20:35 - 1650m - Class 4\n5. 21:10 - 1650m - Class 3\n6. 21:45 - 1000m - Class 4\n7. 22:15 - 1200m - Class 4\n8. 22:50 - 1200m - Class 3\n\nFull card:\nhttps://racing.hkjc.com/racing/information/English/Racing/RaceCard.aspx?RaceDate=2026/09/09&Racecourse=HV&RaceNo=1\n\nFixtures and race times may be amended or cancelled by the HKJC. Please check before attending.\n\nGPS: 22.2706, 114.184\nTime source: OFFICIAL\nRaces source: RACE_CARD\nTrack surface: Turf (Happy Valley is turf-only)\n\nOfficial URLs:\nhttps://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20260909\nhttps://racing.hkjc.com/racing/information/english/Racing/Fixture.aspx?CalMonth=09&CalYear=2026\nhttps://racing.hkjc.com/racing/information/English/Racing/RaceCard.aspx?RaceDate=2026/09/09&Racecourse=HV&RaceNo=1\n\nPrimary sources:\nhttps://res.hkjc.com/racingnews/wp-content/uploads/sites/3/2026/07/fixture_26-27.pdf\nhttps://calendar.google.com/calendar/ical/gturu5cp1tfpdgmlio8tinhlis%40group.calendar.google.com/public/basic.ics\nhttps://racingnews.hkjc.com/english/2026/07/20/racing-fixtures-2026-2027-season/"
+    "description_standard": "Night race meeting at Happy Valley Racecourse.\nSeason opening of the HKJC 2026/27 season.\n\nTime: not yet published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatus: Provisional — race card not yet published\n\nProvisional programme (8 races): 1x1000m, 4x1200m, 3x1650m\nSubject to amendment by the HKJC.\n\nRace info:\nhttps://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20260909\n\nFixtures and race times may be amended or cancelled by the HKJC. Please check before attending.",
+    "description_full": "Night race meeting at Happy Valley Racecourse.\nSeason opening of the HKJC 2026/27 season.\n\nTime: not yet published by the HKJC — the 19:00–23:00 slot is a placeholder.\nStatus: Provisional — race card not yet published\n\nProvisional programme (8 races): 1x1000m, 4x1200m, 3x1650m\nSubject to amendment by the HKJC.\n\nRace info:\nhttps://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20260909\n\nFixtures and race times may be amended or cancelled by the HKJC. Please check before attending.\n\nGPS: 22.2706, 114.184\nTime source: PROVISIONAL\nRaces source: FIXTURE\nTrack surface: Turf (Happy Valley is turf-only)\n\nOfficial URLs:\nhttps://www.hkjc.com/english/racinginfo/racing_cal.asp?d=20260909\nhttps://racing.hkjc.com/racing/information/english/Racing/Fixture.aspx?CalMonth=09&CalYear=2026\nhttps://racing.hkjc.com/racing/information/English/Racing/RaceCard.aspx?RaceDate=2026/09/09&Racecourse=HV&RaceNo=1\n\nPrimary sources:\nhttps://res.hkjc.com/racingnews/wp-content/uploads/sites/3/2026/07/fixture_26-27.pdf\nhttps://calendar.google.com/calendar/ical/gturu5cp1tfpdgmlio8tinhlis%40group.calendar.google.com/public/basic.ics\nhttps://racingnews.hkjc.com/english/2026/07/20/racing-fixtures-2026-2027-season/"
   },
   {
     "date": "2026-09-16",

@@ -43,8 +43,8 @@ HTTPS fallback (same file):
 | Day meetings | 1 |
 | First meeting | 2026-09-09 |
 | Last meeting | 2027-07-14 |
-| Race-card CONFIRMED | 1 |
-| Season-fixture TENTATIVE | 38 |
+| Race-card CONFIRMED | 0 |
+| Season-fixture TENTATIVE | 39 |
 
 ### Non-Wednesday meetings
 
